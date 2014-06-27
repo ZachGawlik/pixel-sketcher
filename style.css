@@ -1,0 +1,33 @@
+body {
+  font-family: sans-serif;
+}
+
+.pixel {
+  height: 30px;
+  width: 30px;
+  background-color: #eeeeee;
+}
+
+td {
+  padding: 0px;
+}
+
+table {
+  border-spacing: 0px;
+}
+
+#columns, #rows {
+  width: 2em;
+}
+
+.blurred {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px);
+}
+
+div.rounded {
+  border-radius: 100%;
+}

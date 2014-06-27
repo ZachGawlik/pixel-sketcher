@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sketcher</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <div>
+      <input type="text" id="columns" value="16"> x <input type="text" id="rows" value="16">
+      <button id="setSize">Set Grid Size</button>
+      <button id="clear">Clear</button>
+      <button id="random">Random</button>
+    </div>
+    <div>
+      Tile Size: <input type="range" min="1" max="50" value="30" id="tsize">
+      Margins: <input type="range" min="0" max="100" value="0" id="marginSize">
+    </div>
+    <div>
+      <input type="checkbox" name="blur"> Blur
+      <input type="checkbox" name="round"> Circles
+    </div>
+    <div id="container">
+      <table id="grid"></table>
+    </div>
+  </body>
+</html>
