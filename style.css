@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  margin: 1em;
 }
 
 .pixel {
@@ -14,10 +15,6 @@ td {
 
 table {
   border-spacing: 0px;
-}
-
-#columns, #rows {
-  width: 2em;
 }
 
 .blurred {
