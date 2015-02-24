@@ -25,6 +25,6 @@ table {
   filter: blur(1px);
 }
 
-div.rounded {
+.rounded .pixel {
   border-radius: 100%;
 }

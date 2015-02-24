@@ -3,6 +3,16 @@ $(function () {
     var $grid = $('#grid');
     var isRandomColor = false;
 
+    function setPixelBehavior() {
+        $pixels.mouseenter(function () {
+            if (isRandomColor) {
+                $(this).css('background-color', get_random_color());
+            } else {
+                $(this).css('background-color', '#000000');
+            }
+        });
+    }
+
     function make_grid(rows, columns) {
         $grid.empty();
         for (var i = 0; i < rows; i += 1) {
@@ -14,13 +24,10 @@ $(function () {
         }
         $('#container').empty().append($grid);
         $pixels = $('.pixel');
-
-        $pixels.mouseenter(function () {
-            $(this).css('background-color', '#000000');
-        });
+        setPixelBehavior();
     }
 
-    function random_color() {
+    function get_random_color() {
         var color = '#';
         hexChars = '0123456789abcdef';
         for (var i = 0; i < 6; i++) {
@@ -40,14 +47,12 @@ $(function () {
     });
 
     $('#clear').click(function() {
-        var color = is
         $('.pixel').css('background-color', '#eeeeee');
     });
 
-    $('#random').click(function() {
-        $('.pixel').mouseenter(function () {
-            $(this).css('background-color', random_color());
-        });
+    $('input[name=random]').change(function() {
+        isRandomColor = $(this).prop('checked');
+        setPixelBehavior();
     });
 
     $('#tsize').on('change mousemove', function() {
@@ -70,7 +75,7 @@ $(function () {
     });
 
     $('input[name=round]').change(function() {
-        $pixels.toggleClass('rounded');
+        $('#container').toggleClass('rounded');
     });
 
     make_grid(16, 16);
