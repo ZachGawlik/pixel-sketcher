@@ -1,19 +1,16 @@
 $(function () {
-    var $pixels = $('.pixel');
     var $grid = $('#grid');
+    var $pixels = $('.pixel');
     var isRandomColor = false;
 
     function setPixelBehavior() {
         $pixels.mouseenter(function () {
-            if (isRandomColor) {
-                $(this).css('background-color', get_random_color());
-            } else {
-                $(this).css('background-color', '#000000');
-            }
+            var color = isRandomColor ? getRandomColor() : '#000000';
+            $(this).css('background-color', color);
         });
     }
 
-    function make_grid(rows, columns) {
+    function makeGrid(rows, columns) {
         $grid.empty();
         for (var i = 0; i < rows; i += 1) {
             var row = $('<tr></tr>');
@@ -22,12 +19,11 @@ $(function () {
             }
             $grid.append(row);
         }
-        $('#container').empty().append($grid);
         $pixels = $('.pixel');
         setPixelBehavior();
     }
 
-    function get_random_color() {
+    function getRandomColor() {
         var color = '#';
         hexChars = '0123456789abcdef';
         for (var i = 0; i < 6; i++) {
@@ -40,14 +36,14 @@ $(function () {
         var newRows = $('#rows').val();
         var newColumns = $('#columns').val(); 
         if (newRows > 0 && newRows < 100 && newColumns > 0 && newColumns < 100) {
-            make_grid(newRows, newColumns);
+            makeGrid(newRows, newColumns);
         } else {
             alert('Number must be between 0-99');
         } 
     });
 
     $('#clear').click(function() {
-        $('.pixel').css('background-color', '#eeeeee');
+        $pixels.css('background-color', '#eeeeee');
     });
 
     $('input[name=random]').change(function() {
@@ -57,9 +53,8 @@ $(function () {
 
     $('#tsize').on('change mousemove', function() {
         var newSize = $(this).val() + 'px';
-        $pixels.css('height', newSize);
-        $pixels.css('width', newSize);
         var newMargin = $('#marginSize').val() * .01 * parseInt(newSize);
+        $pixels.height(newSize).width(newSize);
         $grid.css('border-spacing', newMargin + 'px');
     });
 
@@ -78,5 +73,5 @@ $(function () {
         $('#container').toggleClass('rounded');
     });
 
-    make_grid(16, 16);
+    makeGrid(16, 16);
 });
